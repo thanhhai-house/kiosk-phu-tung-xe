@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kiosk Phụ Tùng Xe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Kiosk Phụ Tùng Xe</h1>
+
+  <div id="list"></div>
+
+  <script src="data.js"></script>
+  <script>
+    const list = document.getElementById("list");
+
+    parts.forEach(p => {
+      const div = document.createElement("div");
+      div.className = "item";
+      div.innerHTML = `
+        <h3>${p.name}</h3>
+        <p>SKU: ${p.sku}</p>
+        <p>Giá: ${p.price.toLocaleString("vi-VN")}₫</p>
+        <p>Hãng: ${p.compatible.join(", ")}</p>
+        <p>${p.stock > 0 ? "Còn hàng" : "Hết hàng"}</p>
+      `;
+      list.appendChild(div);
+    });
+  </script>
+</body>
+</html>
